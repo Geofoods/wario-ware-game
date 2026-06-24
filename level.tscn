@@ -1,3 +1,41 @@
 [gd_scene format=3 uid="uid://6erp1whvq45o"]
 
+[ext_resource type="Texture2D" uid="uid://dm2gjgh4supw1" path="res://r2_06108e01-522d-4039-b360-357e8c96f7c3.png" id="1_u52ul"]
+[ext_resource type="Texture2D" uid="uid://casppo6nny6f3" path="res://images__1_-removebg-preview.png" id="2_vonw3"]
+
 [node name="level" type="Node2D" unique_id=1020310407]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1547696617]
+position = Vector2(581.25, 327.75)
+scale = Vector2(0.29611284, 0.29742545)
+texture = ExtResource("1_u52ul")
+
+[node name="Garlic" type="Sprite2D" parent="." unique_id=1242311069]
+position = Vector2(237, 141)
+scale = Vector2(0.6166667, 0.6166667)
+texture = ExtResource("2_vonw3")
+
+[node name="Garlic2" type="Sprite2D" parent="." unique_id=2029591145]
+position = Vector2(443, 149)
+scale = Vector2(0.6166667, 0.6166667)
+texture = ExtResource("2_vonw3")
+
+[node name="Garlic3" type="Sprite2D" parent="." unique_id=491742263]
+position = Vector2(186, 336)
+scale = Vector2(0.6166667, 0.6166667)
+texture = ExtResource("2_vonw3")
+
+[node name="Garlic4" type="Sprite2D" parent="." unique_id=1648205687]
+position = Vector2(334, 293)
+scale = Vector2(0.6166667, 0.6166667)
+texture = ExtResource("2_vonw3")
+
+[node name="Garlic5" type="Sprite2D" parent="." unique_id=1881073047]
+position = Vector2(470, 147)
+scale = Vector2(0.6166667, 0.6166667)
+texture = ExtResource("2_vonw3")
+
+[node name="Label" type="Label" parent="." unique_id=320068848]
+offset_right = 40.0
+offset_bottom = 23.0
+text = "0.0"

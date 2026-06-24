@@ -3,6 +3,8 @@
 [ext_resource type="Texture2D" uid="uid://dm2gjgh4supw1" path="res://r2_06108e01-522d-4039-b360-357e8c96f7c3.png" id="1_ohhw7"]
 [ext_resource type="Script" uid="uid://pbgmr7ury8i6" path="res://texture_rect.gd" id="2_5klq2"]
 
+[sub_resource type="Theme" id="Theme_s0p3g"]
+
 [node name="TextureRect" type="Control" unique_id=615617353]
 layout_mode = 3
 anchors_preset = 15
@@ -23,6 +25,7 @@ offset_left = 370.0
 offset_top = 229.0
 offset_right = 716.0
 offset_bottom = 268.0
+theme = SubResource("Theme_s0p3g")
 text = "Start Game"
 
 [node name="Button2" type="Button" parent="." unique_id=1397923390]
