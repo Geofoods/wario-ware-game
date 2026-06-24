@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://drwto1lhmvwj3"]
+
+[ext_resource type="Script" uid="uid://c4e6o5apii8it" path="res://player.gd" id="1_onrkg"]
+[ext_resource type="Texture2D" uid="uid://da013s65q4pe2" path="res://Wario290.webp" id="2_i3pqv"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hqtel"]
+radius = 100.0
+height = 294.0
+
+[node name="player" type="CharacterBody2D" unique_id=1053554336]
+script = ExtResource("1_onrkg")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1925843827]
+position = Vector2(157.25, 156.24998)
+scale = Vector2(0.12979166, 0.12979166)
+texture = ExtResource("2_i3pqv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1791840191]
+position = Vector2(162, 159)
+shape = SubResource("CapsuleShape2D_hqtel")

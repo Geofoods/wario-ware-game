@@ -1,9 +1,13 @@
 [gd_scene format=3 uid="uid://6erp1whvq45o"]
 
+[ext_resource type="Script" uid="uid://dofhc853wby8c" path="res://level.gd" id="1_oi3di"]
 [ext_resource type="Texture2D" uid="uid://dm2gjgh4supw1" path="res://r2_06108e01-522d-4039-b360-357e8c96f7c3.png" id="1_u52ul"]
 [ext_resource type="Texture2D" uid="uid://casppo6nny6f3" path="res://images__1_-removebg-preview.png" id="2_vonw3"]
 
+[sub_resource type="Theme" id="Theme_vonw3"]
+
 [node name="level" type="Node2D" unique_id=1020310407]
+script = ExtResource("1_oi3di")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1547696617]
 position = Vector2(581.25, 327.75)
@@ -11,31 +15,44 @@ scale = Vector2(0.29611284, 0.29742545)
 texture = ExtResource("1_u52ul")
 
 [node name="Garlic" type="Sprite2D" parent="." unique_id=1242311069]
-position = Vector2(237, 141)
+position = Vector2(192, 189)
 scale = Vector2(0.6166667, 0.6166667)
 texture = ExtResource("2_vonw3")
 
 [node name="Garlic2" type="Sprite2D" parent="." unique_id=2029591145]
-position = Vector2(443, 149)
+position = Vector2(630, 196)
 scale = Vector2(0.6166667, 0.6166667)
 texture = ExtResource("2_vonw3")
 
 [node name="Garlic3" type="Sprite2D" parent="." unique_id=491742263]
-position = Vector2(186, 336)
+position = Vector2(347, 194)
 scale = Vector2(0.6166667, 0.6166667)
 texture = ExtResource("2_vonw3")
 
 [node name="Garlic4" type="Sprite2D" parent="." unique_id=1648205687]
-position = Vector2(334, 293)
+position = Vector2(489.00003, 195)
 scale = Vector2(0.6166667, 0.6166667)
 texture = ExtResource("2_vonw3")
 
 [node name="Garlic5" type="Sprite2D" parent="." unique_id=1881073047]
-position = Vector2(470, 147)
+position = Vector2(776, 199)
 scale = Vector2(0.6166667, 0.6166667)
 texture = ExtResource("2_vonw3")
 
 [node name="Label" type="Label" parent="." unique_id=320068848]
-offset_right = 40.0
-offset_bottom = 23.0
+offset_left = 486.0
+offset_top = 506.0
+offset_right = 670.0
+offset_bottom = 643.0
+theme = SubResource("Theme_vonw3")
+theme_override_font_sizes/font_size = 100
 text = "0.0"
+
+[node name="Label2" type="Label" parent="." unique_id=1125405082]
+offset_left = 389.0
+offset_top = 409.0
+offset_right = 731.0
+offset_bottom = 546.0
+theme = SubResource("Theme_vonw3")
+theme_override_font_sizes/font_size = 100
+text = "Level #"
