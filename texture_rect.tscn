@@ -1,0 +1,44 @@
+[gd_scene format=3 uid="uid://b3edykf5xbqmr"]
+
+[ext_resource type="Texture2D" uid="uid://dm2gjgh4supw1" path="res://r2_06108e01-522d-4039-b360-357e8c96f7c3.png" id="1_ohhw7"]
+[ext_resource type="Script" uid="uid://pbgmr7ury8i6" path="res://texture_rect.gd" id="2_5klq2"]
+
+[node name="TextureRect" type="Control" unique_id=615617353]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("2_5klq2")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1166134190]
+position = Vector2(581.25, 327.75)
+scale = Vector2(0.29611284, 0.29742545)
+texture = ExtResource("1_ohhw7")
+
+[node name="Button" type="Button" parent="." unique_id=525298986]
+layout_mode = 0
+offset_left = 370.0
+offset_top = 229.0
+offset_right = 716.0
+offset_bottom = 268.0
+text = "Start Game"
+
+[node name="Button2" type="Button" parent="." unique_id=1397923390]
+layout_mode = 0
+offset_left = 370.0
+offset_top = 374.0
+offset_right = 716.0
+offset_bottom = 413.0
+text = "Quit"
+
+[node name="Button3" type="Button" parent="." unique_id=2011672891]
+layout_mode = 0
+offset_left = 370.0
+offset_top = 302.0
+offset_right = 716.0
+offset_bottom = 341.0
+text = "Settings"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

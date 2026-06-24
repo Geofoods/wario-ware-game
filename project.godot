@@ -11,12 +11,17 @@ config_version=5
 [application]
 
 config/name="WarioWare Game"
+run/main_scene="uid://b3edykf5xbqmr"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
 
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/godot_super-wakatime/plugin.cfg")
+
+[gui]
+
+theme="res://theme.tres"
 
 [physics]
 
