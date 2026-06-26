@@ -12,7 +12,9 @@ var state: State = State.PLAYING
 
 func _ready() -> void:
 	level_label.add_theme_font_override("font", WARIOWARE_FONT)
+	level_label.add_theme_constant_override("outline_size", 10)
 	timer_label.add_theme_font_override("font", WARIOWARE_FONT)
+	timer_label.add_theme_constant_override("outline_size", 10)
 	Global.current_level += 1
 	level_label.text = "Level %d" % Global.current_level
 	timer_label.text = "%.1f" % time_left

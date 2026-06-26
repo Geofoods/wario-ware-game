@@ -18,6 +18,7 @@ var velocities: Dictionary = {}
 
 func _ready() -> void:
 	hud_label.add_theme_font_override("font", WARIOWARE_FONT)
+	hud_label.add_theme_constant_override("outline_size", 4)
 	screen_rect = get_viewport_rect()
 
 	for i in YOSHI_COUNT:

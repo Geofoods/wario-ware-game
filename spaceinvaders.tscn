@@ -1,18 +1,18 @@
 [gd_scene format=3 uid="uid://dfvn78hyhcp5r"]
 
-[ext_resource type="PackedScene" uid="uid://0k88ecmjmkpu" path="res://scrolling_background.tscn" id="1_8w31r"]
-[ext_resource type="Script" path="res://spaceinvaders.gd" id="2_1rxdh"]
+[ext_resource type="PackedScene" path="res://scrolling_background2.tscn" id="2_0mvaf"]
+[ext_resource type="Script" uid="uid://0gqpkljclfh3" path="res://spaceinvaders.gd" id="2_1rxdh"]
 
-[node name="spaceinvaders" type="Node2D"]
+[node name="spaceinvaders" type="Node2D" unique_id=2129277312]
 script = ExtResource("2_1rxdh")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1563625258]
 
-[node name="HUDLabel" type="Label" parent="CanvasLayer"]
+[node name="HUDLabel" type="Label" parent="CanvasLayer" unique_id=1217082270]
 offset_left = 14.0
 offset_top = 10.0
 offset_right = 14.0
 offset_bottom = 46.0
 theme_override_font_sizes/font_size = 32
 
-[node name="ScrollingBackground" parent="." instance=ExtResource("1_8w31r")]
+[node name="ScrollingBackground2" parent="." unique_id=1862902546 instance=ExtResource("2_0mvaf")]
