@@ -2,8 +2,8 @@ extends Node2D
 
 enum State { PLAYING, WON, LOST }
 
-@onready var level_label: Label = $Label2
-@onready var timer_label: Label = $Label
+@onready var level_label: Label = $CanvasLayer/Label2
+@onready var timer_label: Label = $CanvasLayer/Label
 
 var time_left: float = 2.0
 var state: State = State.PLAYING
