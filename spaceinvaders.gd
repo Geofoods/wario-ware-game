@@ -1,5 +1,6 @@
 extends Node2D
 
+const WARIOWARE_FONT = preload("res://Wariowareinc-BWWdn.ttf")
 const TIME_LIMIT = 10.0
 const PLAYER_WIDTH = 18.0
 const PLAYER_HEIGHT = 40.0
@@ -26,6 +27,7 @@ var mouse_was_down := false
 @onready var hud_label: Label = $CanvasLayer/HUDLabel
 
 func _ready() -> void:
+	hud_label.add_theme_font_override("font", WARIOWARE_FONT)
 	screen_rect = get_viewport_rect()
 	player_y = screen_rect.size.y * 0.5
 
@@ -53,7 +55,7 @@ func _process(delta: float) -> void:
 	elapsed += delta
 	if time_left <= 0:
 		finished = true
-		get_tree().change_scene_to_file("res://texture_rect.tscn")
+		Transition.change_scene("res://texture_rect.tscn")
 		return
 
 	update_hud()
@@ -88,7 +90,7 @@ func _process(delta: float) -> void:
 			continue
 		if e.pos_x < PLAYER_X + PLAYER_WIDTH + ENEMY_SIZE:
 			finished = true
-			get_tree().change_scene_to_file("res://texture_rect.tscn")
+			Transition.change_scene("res://texture_rect.tscn")
 			return
 
 	for b in bullets:
@@ -113,7 +115,7 @@ func _process(delta: float) -> void:
 
 	if all_dead:
 		finished = true
-		get_tree().change_scene_to_file("res://level.tscn")
+		Transition.change_scene("res://level.tscn")
 		return
 
 	queue_redraw()

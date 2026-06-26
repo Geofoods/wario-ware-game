@@ -1,5 +1,6 @@
 extends Node2D
 
+const WARIOWARE_FONT = preload("res://Wariowareinc-BWWdn.ttf")
 const GARLIC_TARGET = 1
 const TIME_LIMIT = 10.0
 
@@ -10,6 +11,7 @@ var finished := false
 @onready var hud_label: Label = $CanvasLayer/HUDLabel
 
 func _ready() -> void:
+	hud_label.add_theme_font_override("font", WARIOWARE_FONT)
 	update_hud()
 
 	var area: Area2D = $garlic.get_node("Area2D")
@@ -23,7 +25,7 @@ func _process(delta: float) -> void:
 	if time_left <= 0:
 		time_left = 0
 		finished = true
-		get_tree().change_scene_to_file("res://level.tscn")
+		Transition.change_scene("res://level.tscn")
 		return
 
 	update_hud()
@@ -43,7 +45,7 @@ func _on_garlic_collected(body: Node2D, garlic: Node) -> void:
 
 	if garlic_collected >= GARLIC_TARGET:
 		finished = true
-		get_tree().change_scene_to_file("res://level.tscn")
+		Transition.change_scene("res://level.tscn")
 
 func update_hud() -> void:
 	hud_label.text = "Garlic: %d/%d\nTime: %.1f" % [garlic_collected, GARLIC_TARGET, time_left]

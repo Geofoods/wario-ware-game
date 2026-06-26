@@ -8,11 +8,6 @@ script = ExtResource("1_rlxdi")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=55220359]
 
-[node name="HUDBg" type="ColorRect" parent="CanvasLayer"]
-anchor_right = 1.0
-offset_bottom = 48.0
-color = Color(0.06, 0, 0.12, 0.75)
-
 [node name="HUDLabel" type="Label" parent="CanvasLayer" unique_id=2132306071]
 offset_left = 14.0
 offset_top = 10.0

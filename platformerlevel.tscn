@@ -136,11 +136,6 @@ libraries/ = SubResource("AnimationLibrary_6626f")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=907799382]
 
-[node name="HUDBg" type="ColorRect" parent="CanvasLayer"]
-anchor_right = 1.0
-offset_bottom = 48.0
-color = Color(0.06, 0, 0.12, 0.75)
-
 [node name="HUDLabel" type="Label" parent="CanvasLayer" unique_id=917069228]
 offset_left = 14.0
 offset_top = 8.0

@@ -1,5 +1,6 @@
 extends Node2D
 
+const WARIOWARE_FONT = preload("res://Wariowareinc-BWWdn.ttf")
 const SURVIVE_TIME = 10.0
 const BALL_SPEED = 700.0
 const PADDLE_HEIGHT = 100.0
@@ -18,6 +19,7 @@ var hue := 0.0
 @onready var hud_label: Label = $CanvasLayer/HUDLabel
 
 func _ready() -> void:
+	hud_label.add_theme_font_override("font", WARIOWARE_FONT)
 	screen_rect = get_viewport_rect()
 	ball_pos = screen_rect.size * 0.5
 	var angle = randf_range(-0.5, 0.5)
@@ -33,7 +35,7 @@ func _process(delta: float) -> void:
 	time_left -= delta
 	if time_left <= 0:
 		finished = true
-		get_tree().change_scene_to_file("res://level.tscn")
+		Transition.change_scene("res://level.tscn")
 		return
 
 	update_hud()
@@ -60,7 +62,7 @@ func _process(delta: float) -> void:
 			ball_pos.x = PADDLE_X + PADDLE_WIDTH + BALL_SIZE * 0.5
 		elif ball_pos.x < -BALL_SIZE:
 			finished = true
-			get_tree().change_scene_to_file("res://texture_rect.tscn")
+			Transition.change_scene("res://texture_rect.tscn")
 			return
 
 	queue_redraw()

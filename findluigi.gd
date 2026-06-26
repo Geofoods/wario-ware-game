@@ -1,5 +1,7 @@
 extends Node2D
 
+const WARIOWARE_FONT = preload("res://Wariowareinc-BWWdn.ttf")
+const TIME_LIMIT = 10.0
 const YOSHI_COUNT = 50
 const YOSHI_TEXTURE = preload("res://yoshi.png")
 const LUIGI_TEXTURE = preload("res://luigi.png")
@@ -9,11 +11,13 @@ const BOUNCE_MARGIN = 20
 
 var screen_rect: Rect2
 var finished := false
+var time_left := TIME_LIMIT
 var velocities: Dictionary = {}
 
 @onready var hud_label: Label = $CanvasLayer/HUDLabel
 
 func _ready() -> void:
+	hud_label.add_theme_font_override("font", WARIOWARE_FONT)
 	screen_rect = get_viewport_rect()
 
 	for i in YOSHI_COUNT:
@@ -21,11 +25,19 @@ func _ready() -> void:
 
 	spawn_creature(LUIGI_TEXTURE, true)
 
-	hud_label.text = "Find Luigi!"
+	update_hud()
 
 func _process(delta: float) -> void:
 	if finished:
 		return
+
+	time_left -= delta
+	if time_left <= 0:
+		finished = true
+		Transition.change_scene("res://texture_rect.tscn")
+		return
+
+	update_hud()
 
 	for child in get_children():
 		if child is Area2D:
@@ -82,9 +94,12 @@ func spawn_creature(texture: Texture2D, is_luigi: bool) -> void:
 
 	add_child(area)
 
+func update_hud() -> void:
+	hud_label.text = "Find Luigi!  Time: %.1f" % time_left
+
 func _on_luigi_clicked(_viewport: Node, event: InputEvent, _shape_idx: int) -> void:
 	if finished:
 		return
 	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
 		finished = true
-		get_tree().change_scene_to_file("res://level.tscn")
+		Transition.change_scene("res://level.tscn")
