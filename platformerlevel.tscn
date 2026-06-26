@@ -2,6 +2,8 @@
 
 [ext_resource type="PackedScene" uid="uid://drwto1lhmvwj3" path="res://player.tscn" id="1_1rf7d"]
 [ext_resource type="Texture2D" uid="uid://casppo6nny6f3" path="res://images__1_-removebg-preview.png" id="2_jjh3v"]
+[ext_resource type="Script" uid="uid://b6ap731b72noc" path="res://platformerlevel.gd" id="3_g6ucd"]
+[ext_resource type="PackedScene" path="res://scrolling_background.tscn" id="4_s5t6u"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jjh3v"]
 size = Vector2(1151, 75)
@@ -48,6 +50,9 @@ _data = {
 }
 
 [node name="platformerlevel" type="Node2D" unique_id=282166521]
+script = ExtResource("3_g6ucd")
+
+[node name="Background" parent="." unique_id=512790066 instance=ExtResource("4_s5t6u")]
 
 [node name="player" parent="." unique_id=1053554336 instance=ExtResource("1_1rf7d")]
 position = Vector2(30, 454)
@@ -111,7 +116,7 @@ color = Color(0.9843137, 0.95686275, 0.5647059, 1)
 position = Vector2(577.5, 630.5)
 shape = SubResource("RectangleShape2D_jjh3v")
 
-[node name="TextureRect" type="TextureRect" parent="." unique_id=1348359989]
+[node name="garlic" type="TextureRect" parent="." unique_id=1026787347]
 offset_left = 234.0
 offset_top = 58.0
 offset_right = 594.0
@@ -120,11 +125,20 @@ scale = Vector2(0.3, 0.3)
 texture = ExtResource("2_jjh3v")
 expand_mode = 1
 
-[node name="Area2D" type="Area2D" parent="TextureRect" unique_id=689850042]
+[node name="Area2D" type="Area2D" parent="garlic" unique_id=589321917]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="TextureRect/Area2D" unique_id=1339397136]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="garlic/Area2D" unique_id=641357661]
 position = Vector2(176.66666, 180)
 shape = SubResource("CircleShape2D_6626f")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="TextureRect" unique_id=679698130]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="garlic" unique_id=1530507457]
 libraries/ = SubResource("AnimationLibrary_6626f")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=907799382]
+
+[node name="HUDLabel" type="Label" parent="CanvasLayer" unique_id=917069228]
+offset_left = 10.0
+offset_top = 8.0
+offset_right = 11.0
+offset_bottom = 47.0
+theme_override_font_sizes/font_size = 28

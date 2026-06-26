@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://dmq7f4wn0ffbf"]
+
+[ext_resource type="Script" uid="uid://dr6pib7u4m7bm" path="res://findluigi.gd" id="1_7ur4k"]
+[ext_resource type="PackedScene" path="res://scrolling_background.tscn" id="2_13s0b"]
+
+[node name="findluigi" type="Node2D" unique_id=1192200618]
+script = ExtResource("1_7ur4k")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1232428970]
+
+[node name="HUDLabel" type="Label" parent="CanvasLayer" unique_id=453426106]
+offset_left = 10.0
+offset_top = 10.0
+theme_override_font_sizes/font_size = 28
+
+[node name="ScrollingBackground" parent="." unique_id=1741786071 instance=ExtResource("2_13s0b")]

@@ -2,42 +2,47 @@ extends Node2D
 
 enum State { PLAYING, WON, LOST }
 
-@onready var timer_label: Label = $Label
 @onready var level_label: Label = $Label2
+@onready var timer_label: Label = $Label
 
-var level: int = 0
-var time_left: float = 5.0
+var time_left: float = 2.0
 var state: State = State.PLAYING
 
 func _ready() -> void:
-	next_level()
+	Global.current_level += 1
+	level_label.text = "Level %d" % Global.current_level
+	timer_label.text = str(ceil(time_left))
 
 func _process(delta: float) -> void:
 	match state:
 		State.PLAYING:
 			time_left -= delta
-			timer_label.text = str(snapped(time_left, 0.1))
+			timer_label.text = str(ceil(time_left))
 			if time_left <= 0:
-				time_left = 0
-				state = State.LOST
-				_on_lost()
+				state = State.WON
+				_on_timer_done()
 		State.WON:
-			if Input.is_action_just_pressed(&"ui_accept"):
-				next_level()
+			pass
 		State.LOST:
-			if Input.is_action_just_pressed(&"ui_accept"):
-				get_tree().change_scene_to_file("res://texture_rect.tscn")
+			pass
 
-func next_level() -> void:
-	level += 1
-	time_left = 5.0
-	state = State.PLAYING
-	level_label.text = "Level %d" % level
-	timer_label.text = str(snapped(time_left, 0.1))
+func _on_timer_done() -> void:
+	match Global.current_level:
+		1:
+			get_tree().change_scene_to_file("res://platformerlevel.tscn")
+		2:
+			get_tree().change_scene_to_file("res://clickergame.tscn")
+		3:
+			get_tree().change_scene_to_file("res://flappybird.tscn")
+		4:
+			get_tree().change_scene_to_file("res://findluigi.tscn")
+		5:
+			get_tree().change_scene_to_file("res://pong.tscn")
+		_:
+			get_tree().change_scene_to_file("res://platformerlevel.tscn")
 
 func _on_win() -> void:
-	state = State.WON
-	timer_label.text = "WIN!"
+	get_tree().change_scene_to_file("res://win_screen.tscn")
 
 func _on_lost() -> void:
-	timer_label.text = "GAME OVER"
+	get_tree().change_scene_to_file("res://lose_screen.tscn")

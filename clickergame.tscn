@@ -1,0 +1,57 @@
+[gd_scene format=3 uid="uid://0vs5c13e0e12"]
+
+[ext_resource type="PackedScene" path="res://scrolling_background.tscn" id="1_ifdh0"]
+[ext_resource type="Texture2D" uid="uid://casppo6nny6f3" path="res://images__1_-removebg-preview.png" id="2_1ieab"]
+[ext_resource type="Script" path="res://clickergame.gd" id="3_h3uyd"]
+
+[node name="clickergame" type="Node2D" unique_id=1818453843]
+script = ExtResource("3_h3uyd")
+
+[node name="ScrollingBackground" parent="." unique_id=95310850 instance=ExtResource("1_ifdh0")]
+
+[node name="TextureButton" type="TextureButton" parent="." unique_id=1622661990]
+offset_left = 40.999985
+offset_top = 61.0
+offset_right = 401.0
+offset_bottom = 421.0
+scale = Vector2(0.5863491, 0.5653902)
+texture_normal = ExtResource("2_1ieab")
+
+[node name="TextureButton2" type="TextureButton" parent="." unique_id=288131365]
+offset_left = 185.00002
+offset_top = 340.0
+offset_right = 545.0
+offset_bottom = 700.0
+scale = Vector2(0.5863491, 0.5653902)
+texture_normal = ExtResource("2_1ieab")
+
+[node name="TextureButton3" type="TextureButton" parent="." unique_id=1286635342]
+offset_left = 399.0
+offset_top = 87.00003
+offset_right = 759.0
+offset_bottom = 447.00003
+scale = Vector2(0.5863491, 0.5653902)
+texture_normal = ExtResource("2_1ieab")
+
+[node name="TextureButton4" type="TextureButton" parent="." unique_id=638175037]
+offset_left = 626.0
+offset_top = 355.0
+offset_right = 986.0
+offset_bottom = 715.0
+scale = Vector2(0.5863491, 0.5653902)
+texture_normal = ExtResource("2_1ieab")
+
+[node name="TextureButton5" type="TextureButton" parent="." unique_id=1984641991]
+offset_left = 821.0
+offset_top = 81.0
+offset_right = 1181.0
+offset_bottom = 441.0
+scale = Vector2(0.5863491, 0.5653902)
+texture_normal = ExtResource("2_1ieab")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="HUDLabel" type="Label" parent="CanvasLayer"]
+offset_left = 10.0
+offset_top = 10.0
+theme_override_font_sizes/font_size = 28

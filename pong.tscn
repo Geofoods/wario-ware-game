@@ -1,0 +1,42 @@
+[gd_scene format=3 uid="uid://dxtiugncs62i7"]
+
+[ext_resource type="PackedScene" path="res://scrolling_background.tscn" id="1_8w31r"]
+[ext_resource type="Script" path="res://pong.gd" id="2_u278x"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8w31r"]
+size = Vector2(20, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_riwj1"]
+size = Vector2(120, 15)
+
+[node name="pong" type="Node2D" unique_id=2094616510]
+script = ExtResource("2_u278x")
+
+[node name="ScrollingBackground" parent="." unique_id=1554700950 instance=ExtResource("1_8w31r")]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="HUDLabel" type="Label" parent="CanvasLayer"]
+offset_left = 10.0
+offset_top = 10.0
+theme_override_font_sizes/font_size = 28
+
+[node name="Ball" type="CharacterBody2D" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="Ball"]
+color = Color(1, 1, 1)
+size = Vector2(20, 20)
+position = Vector2(-10, -10)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ball"]
+shape = SubResource("RectangleShape2D_8w31r")
+
+[node name="Paddle" type="CharacterBody2D" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="Paddle"]
+color = Color(1, 1, 1)
+size = Vector2(120, 15)
+position = Vector2(-60, -7.5)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Paddle"]
+shape = SubResource("RectangleShape2D_riwj1")

@@ -9,7 +9,7 @@
 [node name="level" type="Node2D" unique_id=1020310407]
 script = ExtResource("1_oi3di")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1547696617]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1870768529]
 position = Vector2(581.25, 327.75)
 scale = Vector2(0.29611284, 0.29742545)
 texture = ExtResource("1_u52ul")
@@ -49,10 +49,10 @@ theme_override_font_sizes/font_size = 100
 text = "0.0"
 
 [node name="Label2" type="Label" parent="." unique_id=1125405082]
-offset_left = 389.0
-offset_top = 409.0
-offset_right = 731.0
-offset_bottom = 546.0
+offset_left = 382.0
+offset_top = 374.0
+offset_right = 724.0
+offset_bottom = 511.0
 theme = SubResource("Theme_vonw3")
 theme_override_font_sizes/font_size = 100
 text = "Level #"

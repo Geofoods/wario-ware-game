@@ -1,0 +1,51 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://lose_screen.gd" id="1_m7n8o"]
+[ext_resource type="Texture2D" uid="uid://dm2gjgh4supw1" path="res://r2_06108e01-522d-4039-b360-357e8c96f7c3.png" id="2_p9q0r"]
+
+[sub_resource type="Theme" id="Theme_fghij"]
+
+[node name="LoseScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_m7n8o")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(581.25, 327.75)
+scale = Vector2(0.29611284, 0.29742545)
+texture = ExtResource("2_p9q0r")
+
+[node name="Label" type="Label" parent="."]
+offset_left = 300.0
+offset_top = 120.0
+offset_right = 860.0
+offset_bottom = 240.0
+theme = SubResource("Theme_fghij")
+theme_override_font_sizes/font_size = 100
+horizontal_alignment = 1
+text = "GAME OVER"
+
+[node name="Retry" type="Button" parent="."]
+layout_mode = 0
+offset_left = 370.0
+offset_top = 280.0
+offset_right = 716.0
+offset_bottom = 319.0
+theme = SubResource("Theme_fghij")
+text = "Retry"
+
+[node name="MainMenu" type="Button" parent="."]
+layout_mode = 0
+offset_left = 370.0
+offset_top = 340.0
+offset_right = 716.0
+offset_bottom = 379.0
+theme = SubResource("Theme_fghij")
+text = "Main Menu"
+
+[connection signal="pressed" from="Retry" to="." method="_on_retry_pressed"]
+[connection signal="pressed" from="MainMenu" to="." method="_on_main_menu_pressed"]
