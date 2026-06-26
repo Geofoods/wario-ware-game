@@ -13,49 +13,46 @@ scale = Vector2(0.29611284, 0.29742545)
 texture = ExtResource("1_u52ul")
 
 [node name="Garlic" type="Sprite2D" parent="." unique_id=1242311069]
-position = Vector2(192, 189)
+position = Vector2(118, 207)
 scale = Vector2(0.6166667, 0.6166667)
 texture = ExtResource("2_vonw3")
 
 [node name="Garlic2" type="Sprite2D" parent="." unique_id=2029591145]
-position = Vector2(630, 196)
+position = Vector2(573, 200)
 scale = Vector2(0.6166667, 0.6166667)
 texture = ExtResource("2_vonw3")
 
 [node name="Garlic3" type="Sprite2D" parent="." unique_id=491742263]
-position = Vector2(347, 194)
+position = Vector2(278, 206.00002)
 scale = Vector2(0.6166667, 0.6166667)
 texture = ExtResource("2_vonw3")
 
 [node name="Garlic4" type="Sprite2D" parent="." unique_id=1648205687]
-position = Vector2(489.00003, 195)
+position = Vector2(427, 206)
 scale = Vector2(0.6166667, 0.6166667)
 texture = ExtResource("2_vonw3")
 
 [node name="Garlic5" type="Sprite2D" parent="." unique_id=1881073047]
-position = Vector2(776, 199)
+position = Vector2(721, 199)
 scale = Vector2(0.6166667, 0.6166667)
 texture = ExtResource("2_vonw3")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="PanelBg" type="ColorRect" parent="CanvasLayer"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-color = Color(0.06, 0, 0.12, 0.55)
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=86680294]
 
 [node name="Label" type="Label" parent="CanvasLayer" unique_id=320068848]
-offset_left = 486.0
-offset_top = 506.0
-offset_right = 670.0
-offset_bottom = 643.0
+offset_left = 348.0
+offset_top = 458.0
+offset_right = 532.0
+offset_bottom = 595.0
 theme_override_font_sizes/font_size = 100
 text = "0.0"
+metadata/_edit_use_anchors_ = true
 
 [node name="Label2" type="Label" parent="CanvasLayer" unique_id=1125405082]
-offset_left = 382.0
-offset_top = 374.0
-offset_right = 724.0
-offset_bottom = 511.0
+offset_left = 244.0
+offset_top = 326.0
+offset_right = 586.0
+offset_bottom = 463.0
 theme_override_font_sizes/font_size = 100
 text = "Level #"
+metadata/_edit_use_anchors_ = true

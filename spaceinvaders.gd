@@ -1,12 +1,12 @@
 extends Node2D
 
 const WARIOWARE_FONT = preload("res://Wariowareinc-BWWdn.ttf")
-const TIME_LIMIT = 10.0
+const TIME_LIMIT = 20.0
 const PLAYER_WIDTH = 30.0
 const PLAYER_HEIGHT = 20.0
 const BULLET_SIZE = 6.0
 const BULLET_SPEED = 500.0
-const ENEMY_SPEED = 80.0
+const BASE_ENEMY_SPEED = 80.0
 const ENEMY_DESCENT = 30.0
 const ROWS = 3
 const COLS = 5
@@ -14,7 +14,7 @@ const ENEMY_SCALE = 0.08
 
 const ALIEN_TEXTURE = preload("res://toppng.com-space-invaders-alien-space-invaders-alien-sprite-1057x769.png")
 
-var time_left := TIME_LIMIT
+var time_left: float
 var finished := false
 var player_x := 0.0
 var bullets: Array[Dictionary] = []
@@ -23,6 +23,8 @@ var screen_rect: Rect2
 var shoot_cooldown := 0.0
 var mouse_was_down := false
 var enemy_direction := 1
+var enemy_speed := BASE_ENEMY_SPEED
+var dying_enemies := {}
 
 @onready var hud_label: Label = $CanvasLayer/HUDLabel
 
@@ -31,6 +33,9 @@ func _ready() -> void:
 	hud_label.add_theme_constant_override("outline_size", 4)
 	screen_rect = get_viewport_rect()
 	player_x = screen_rect.size.x * 0.5
+	var sm = Global.get_speed_mult()
+	time_left = TIME_LIMIT / sm
+	enemy_speed = BASE_ENEMY_SPEED * sm
 
 	var start_x = screen_rect.size.x * 0.15
 	var start_y = screen_rect.size.y * 0.1
@@ -57,7 +62,11 @@ func _process(delta: float) -> void:
 	time_left -= delta
 	if time_left <= 0:
 		finished = true
-		Transition.change_scene("res://texture_rect.tscn")
+		Global.lives -= 1
+		if Global.lives <= 0:
+			Transition.change_scene("res://lose_screen.tscn")
+		else:
+			Transition.change_scene("res://level.tscn")
 		return
 
 	update_hud()
@@ -75,7 +84,7 @@ func _process(delta: float) -> void:
 				pos = Vector2(player_x, screen_rect.size.y - PLAYER_HEIGHT - 10),
 				vel = Vector2(0, -BULLET_SPEED)
 			})
-			shoot_cooldown = 0.25
+			shoot_cooldown = 0.0
 	mouse_was_down = Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT)
 
 	for b in bullets:
@@ -83,9 +92,11 @@ func _process(delta: float) -> void:
 
 	bullets = bullets.filter(func(b): return b.pos.y > -BULLET_SIZE)
 
-	var move_dir = Vector2(ENEMY_SPEED * enemy_direction * delta, 0)
+	var move_dir = Vector2(enemy_speed * enemy_direction * delta, 0)
 	var edge_reached = false
 	for e in enemies:
+		if dying_enemies.has(e):
+			continue
 		e.position += move_dir
 		if e.position.x < 50 or e.position.x > screen_rect.size.x - 50:
 			edge_reached = true
@@ -93,25 +104,33 @@ func _process(delta: float) -> void:
 	if edge_reached:
 		enemy_direction *= -1
 		for e in enemies:
+			if dying_enemies.has(e):
+				continue
 			e.position.y += ENEMY_DESCENT
 			e.position.x = clamp(e.position.x, 50, screen_rect.size.x - 50)
 
 	for e in enemies:
+		if dying_enemies.has(e):
+			continue
 		if e.position.y > screen_rect.size.y - 80:
 			finished = true
-			Transition.change_scene("res://texture_rect.tscn")
+			Global.lives -= 1
+			if Global.lives <= 0:
+				Transition.change_scene("res://lose_screen.tscn")
+			else:
+				Transition.change_scene("res://level.tscn")
 			return
 
 	for b in bullets:
 		var b_rect = Rect2(b.pos.x - BULLET_SIZE * 0.5, b.pos.y - BULLET_SIZE * 0.5, BULLET_SIZE, BULLET_SIZE)
 		for e in enemies:
-			if not e.visible:
+			if not e.visible or dying_enemies.has(e):
 				continue
 			var tex = e.texture
 			var tex_size = tex.get_size() * ENEMY_SCALE
 			var e_rect = Rect2(e.position.x - tex_size.x * 0.5, e.position.y - tex_size.y * 0.5, tex_size.x, tex_size.y)
 			if b_rect.intersects(e_rect):
-				e.visible = false
+				die(e)
 				b.pos.y = -9999
 				break
 
@@ -119,7 +138,7 @@ func _process(delta: float) -> void:
 
 	var all_dead = true
 	for e in enemies:
-		if e.visible:
+		if e.visible and not dying_enemies.has(e):
 			all_dead = false
 			break
 
@@ -144,6 +163,17 @@ func _draw() -> void:
 
 	for b in bullets:
 		draw_rect(Rect2(b.pos.x - BULLET_SIZE * 0.5, b.pos.y - BULLET_SIZE * 0.5, BULLET_SIZE, BULLET_SIZE), Color(1, 0.3, 0.1, 1))
+
+func die(e: Node) -> void:
+	dying_enemies[e] = true
+	var tween = create_tween()
+	tween.set_parallel(true)
+	tween.tween_property(e, "scale", e.scale * 1.5, 0.3)
+	tween.tween_property(e, "modulate", Color(1, 0.3, 0.1, 0), 0.3)
+	tween.tween_callback(func():
+		e.visible = false
+		dying_enemies.erase(e)
+	)
 
 func update_hud() -> void:
 	var alive = 0

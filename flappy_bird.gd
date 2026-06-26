@@ -25,7 +25,11 @@ func _physics_process(delta: float) -> void:
 		sprite.rotation += DEATH_ROTATION_SPEED * delta
 		move_and_slide()
 		if death_timer >= DEATH_DELAY:
-			Transition.change_scene("res://texture_rect.tscn")
+			Global.lives -= 1
+			if Global.lives <= 0:
+				Transition.change_scene("res://lose_screen.tscn")
+			else:
+				Transition.change_scene("res://level.tscn")
 		return
 
 	var mouse_click := Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT) and not mouse_was_down

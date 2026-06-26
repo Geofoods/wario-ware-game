@@ -3,7 +3,8 @@
 [ext_resource type="Script" path="res://lose_screen.gd" id="1_m7n8o"]
 [ext_resource type="Texture2D" uid="uid://dm2gjgh4supw1" path="res://r2_06108e01-522d-4039-b360-357e8c96f7c3.png" id="2_p9q0r"]
 
-[sub_resource type="Theme" id="Theme_fghij"]
+[sub_resource type="StyleBoxFlat" id="sb_btn_bg"]
+bg_color = Color(0.06, 0, 0.12, 0.6)
 
 [node name="LoseScreen" type="Control"]
 layout_mode = 3
@@ -13,6 +14,13 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_m7n8o")
+
+[node name="Overlay" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color(0.06, 0, 0.12, 0.5)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(581.25, 327.75)
@@ -24,7 +32,6 @@ offset_left = 300.0
 offset_top = 120.0
 offset_right = 860.0
 offset_bottom = 240.0
-theme = SubResource("Theme_fghij")
 theme_override_font_sizes/font_size = 100
 horizontal_alignment = 1
 text = "GAME OVER"
@@ -32,19 +39,19 @@ text = "GAME OVER"
 [node name="Retry" type="Button" parent="."]
 layout_mode = 0
 offset_left = 370.0
-offset_top = 280.0
+offset_top = 290.0
 offset_right = 716.0
-offset_bottom = 319.0
-theme = SubResource("Theme_fghij")
+offset_bottom = 350.0
+theme_override_font_sizes/font_size = 24
 text = "Retry"
 
 [node name="MainMenu" type="Button" parent="."]
 layout_mode = 0
 offset_left = 370.0
-offset_top = 340.0
+offset_top = 370.0
 offset_right = 716.0
-offset_bottom = 379.0
-theme = SubResource("Theme_fghij")
+offset_bottom = 430.0
+theme_override_font_sizes/font_size = 24
 text = "Main Menu"
 
 [connection signal="pressed" from="Retry" to="." method="_on_retry_pressed"]

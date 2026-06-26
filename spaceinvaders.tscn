@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://0gqpkljclfh3" path="res://spaceinvaders.gd" id="2_1rxdh"]
 
 [node name="spaceinvaders" type="Node2D" unique_id=2129277312]
+rotation = -0.007517937
 script = ExtResource("2_1rxdh")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1563625258]

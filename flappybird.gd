@@ -2,13 +2,14 @@ extends Node2D
 
 const WARIOWARE_FONT = preload("res://Wariowareinc-BWWdn.ttf")
 const TIME_LIMIT = 10.0
-const PIPE_SPEED = 200.0
+const BASE_PIPE_SPEED = 200.0
 const PIPE_MIN_Y = 600
 const PIPE_MAX_Y = 950
 
-var time_left := TIME_LIMIT
+var time_left: float
 var finished := false
 var started := false
+var pipe_speed := BASE_PIPE_SPEED
 var mouse_was_down := false
 
 @onready var hud_label: Label = $CanvasLayer/HUDLabel
@@ -17,6 +18,9 @@ var mouse_was_down := false
 func _ready() -> void:
 	hud_label.add_theme_font_override("font", WARIOWARE_FONT)
 	hud_label.add_theme_constant_override("outline_size", 4)
+	var sm = Global.get_speed_mult()
+	time_left = TIME_LIMIT / sm
+	pipe_speed = BASE_PIPE_SPEED * sm
 	update_hud()
 
 	var template = $NicePngPipesPng388476
@@ -50,7 +54,7 @@ func _process(delta: float) -> void:
 	update_hud()
 
 	for pipe in pipes:
-		pipe.position.x -= PIPE_SPEED * delta
+		pipe.position.x -= pipe_speed * delta
 		if pipe.position.x < -200:
 			pipe.position.x = 1200
 			pipe.position.y = randf_range(PIPE_MIN_Y, PIPE_MAX_Y)

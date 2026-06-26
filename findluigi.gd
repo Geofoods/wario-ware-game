@@ -5,14 +5,16 @@ const TIME_LIMIT = 10.0
 const YOSHI_COUNT = 50
 const YOSHI_TEXTURE = preload("res://yoshi.png")
 const LUIGI_TEXTURE = preload("res://luigi.png")
-const SPEED_MIN = 200.0
-const SPEED_MAX = 450.0
+const BASE_SPEED_MIN = 200.0
+const BASE_SPEED_MAX = 450.0
 const BOUNCE_MARGIN = 20
 
 var screen_rect: Rect2
 var finished := false
-var time_left := TIME_LIMIT
+var time_left: float
 var velocities: Dictionary = {}
+var speed_min := BASE_SPEED_MIN
+var speed_max := BASE_SPEED_MAX
 
 @onready var hud_label: Label = $CanvasLayer/HUDLabel
 
@@ -20,6 +22,10 @@ func _ready() -> void:
 	hud_label.add_theme_font_override("font", WARIOWARE_FONT)
 	hud_label.add_theme_constant_override("outline_size", 4)
 	screen_rect = get_viewport_rect()
+	var sm = Global.get_speed_mult()
+	time_left = TIME_LIMIT / sm
+	speed_min = BASE_SPEED_MIN * sm
+	speed_max = BASE_SPEED_MAX * sm
 
 	for i in YOSHI_COUNT:
 		spawn_creature(YOSHI_TEXTURE, false)
@@ -35,7 +41,11 @@ func _process(delta: float) -> void:
 	time_left -= delta
 	if time_left <= 0:
 		finished = true
-		Transition.change_scene("res://texture_rect.tscn")
+		Global.lives -= 1
+		if Global.lives <= 0:
+			Transition.change_scene("res://lose_screen.tscn")
+		else:
+			Transition.change_scene("res://level.tscn")
 		return
 
 	update_hud()
@@ -70,8 +80,8 @@ func spawn_creature(texture: Texture2D, is_luigi: bool) -> void:
 	area.position = pos
 
 	var vel = Vector2(
-		randf_range(-1, 1) * randf_range(SPEED_MIN, SPEED_MAX),
-		randf_range(-1, 1) * randf_range(SPEED_MIN, SPEED_MAX)
+		randf_range(-1, 1) * randf_range(speed_min, speed_max),
+		randf_range(-1, 1) * randf_range(speed_min, speed_max)
 	)
 	velocities[area.get_instance_id()] = vel
 

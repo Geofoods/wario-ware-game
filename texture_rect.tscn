@@ -131,3 +131,4 @@ position = Vector2(398, 194)
 texture = ExtResource("3_ek34n")
 
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Button2" to="." method="_on_button_2_pressed"]

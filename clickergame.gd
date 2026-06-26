@@ -5,7 +5,7 @@ const GARLIC_TARGET = 5
 const TIME_LIMIT = 10.0
 
 var garlic_clicked := 0
-var time_left := TIME_LIMIT
+var time_left: float
 var finished := false
 
 @onready var hud_label: Label = $CanvasLayer/HUDLabel
@@ -13,6 +13,7 @@ var finished := false
 func _ready() -> void:
 	hud_label.add_theme_font_override("font", WARIOWARE_FONT)
 	hud_label.add_theme_constant_override("outline_size", 4)
+	time_left = TIME_LIMIT / Global.get_speed_mult()
 	update_hud()
 
 	for child in get_children():
@@ -27,7 +28,11 @@ func _process(delta: float) -> void:
 	if time_left <= 0:
 		time_left = 0
 		finished = true
-		Transition.change_scene("res://texture_rect.tscn")
+		Global.lives -= 1
+		if Global.lives <= 0:
+			Transition.change_scene("res://lose_screen.tscn")
+		else:
+			Transition.change_scene("res://level.tscn")
 		return
 
 	update_hud()
