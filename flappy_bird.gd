@@ -50,7 +50,7 @@ func _physics_process(delta: float) -> void:
 		if collision.get_collider() is StaticBody2D:
 			die()
 
-	if global_position.y < 0 or global_position.y > screen_height:
+	if global_position.y < -100 or global_position.y > screen_height + 100:
 		die()
 
 func die() -> void:

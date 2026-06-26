@@ -8,6 +8,8 @@ const PIPE_MAX_Y = 950
 
 var time_left := TIME_LIMIT
 var finished := false
+var started := false
+var mouse_was_down := false
 
 @onready var hud_label: Label = $CanvasLayer/HUDLabel
 @onready var pipes: Array[Node] = []
@@ -29,6 +31,13 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	if finished:
+		return
+
+	if not started:
+		var mouse_click := Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT) and not mouse_was_down
+		mouse_was_down = Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT)
+		if Input.is_action_just_pressed("ui_accept") or mouse_click:
+			started = true
 		return
 
 	time_left -= delta
