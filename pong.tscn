@@ -1,42 +1,23 @@
 [gd_scene format=3 uid="uid://dxtiugncs62i7"]
 
-[ext_resource type="PackedScene" path="res://scrolling_background.tscn" id="1_8w31r"]
-[ext_resource type="Script" path="res://pong.gd" id="2_u278x"]
+[ext_resource type="PackedScene" uid="uid://0k88ecmjmkpu" path="res://scrolling_background.tscn" id="1_8w31r"]
+[ext_resource type="Script" uid="uid://cap7vfhths8x0" path="res://pong.gd" id="1_rlxdi"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_8w31r"]
-size = Vector2(20, 20)
+[node name="pong" type="Node2D" unique_id=1252929025]
+script = ExtResource("1_rlxdi")
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_riwj1"]
-size = Vector2(120, 15)
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=55220359]
 
-[node name="pong" type="Node2D" unique_id=2094616510]
-script = ExtResource("2_u278x")
+[node name="HUDBg" type="ColorRect" parent="CanvasLayer"]
+anchor_right = 1.0
+offset_bottom = 48.0
+color = Color(0.06, 0, 0.12, 0.75)
 
-[node name="ScrollingBackground" parent="." unique_id=1554700950 instance=ExtResource("1_8w31r")]
-
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="HUDLabel" type="Label" parent="CanvasLayer"]
-offset_left = 10.0
+[node name="HUDLabel" type="Label" parent="CanvasLayer" unique_id=2132306071]
+offset_left = 14.0
 offset_top = 10.0
-theme_override_font_sizes/font_size = 28
+offset_right = 14.0
+offset_bottom = 46.0
+theme_override_font_sizes/font_size = 32
 
-[node name="Ball" type="CharacterBody2D" parent="."]
-
-[node name="ColorRect" type="ColorRect" parent="Ball"]
-color = Color(1, 1, 1)
-size = Vector2(20, 20)
-position = Vector2(-10, -10)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Ball"]
-shape = SubResource("RectangleShape2D_8w31r")
-
-[node name="Paddle" type="CharacterBody2D" parent="."]
-
-[node name="ColorRect" type="ColorRect" parent="Paddle"]
-color = Color(1, 1, 1)
-size = Vector2(120, 15)
-position = Vector2(-60, -7.5)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Paddle"]
-shape = SubResource("RectangleShape2D_riwj1")
+[node name="ScrollingBackground" parent="." unique_id=1915756290 instance=ExtResource("1_8w31r")]

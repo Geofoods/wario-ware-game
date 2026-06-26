@@ -3,8 +3,6 @@
 [ext_resource type="Texture2D" uid="uid://dm2gjgh4supw1" path="res://r2_06108e01-522d-4039-b360-357e8c96f7c3.png" id="1_ohhw7"]
 [ext_resource type="Script" uid="uid://pbgmr7ury8i6" path="res://texture_rect.gd" id="2_5klq2"]
 
-[sub_resource type="Theme" id="Theme_s0p3g"]
-
 [node name="TextureRect" type="Control" unique_id=615617353]
 layout_mode = 3
 anchors_preset = 15
@@ -19,29 +17,48 @@ position = Vector2(581.25, 327.75)
 scale = Vector2(0.29611284, 0.29742545)
 texture = ExtResource("1_ohhw7")
 
-[node name="Button" type="Button" parent="." unique_id=525298986]
+[node name="Overlay" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color(0.06, 0, 0.12, 0.5)
+
+[node name="Title" type="Label" parent="."]
+layout_mode = 0
+offset_left = 280.0
+offset_top = 100.0
+offset_right = 872.0
+offset_bottom = 190.0
+theme_override_font_sizes/font_size = 70
+text = "WARIO WARE"
+horizontal_alignment = 1
+
+[node name="Button" type="Button" parent="."]
 layout_mode = 0
 offset_left = 370.0
-offset_top = 229.0
+offset_top = 240.0
 offset_right = 716.0
-offset_bottom = 268.0
-theme = SubResource("Theme_s0p3g")
+offset_bottom = 300.0
+theme_override_font_sizes/font_size = 24
 text = "Start Game"
 
-[node name="Button2" type="Button" parent="." unique_id=1397923390]
+[node name="Button3" type="Button" parent="."]
 layout_mode = 0
 offset_left = 370.0
-offset_top = 374.0
+offset_top = 320.0
 offset_right = 716.0
-offset_bottom = 413.0
-text = "Quit"
-
-[node name="Button3" type="Button" parent="." unique_id=2011672891]
-layout_mode = 0
-offset_left = 370.0
-offset_top = 302.0
-offset_right = 716.0
-offset_bottom = 341.0
+offset_bottom = 380.0
+theme_override_font_sizes/font_size = 24
 text = "Settings"
+
+[node name="Button2" type="Button" parent="."]
+layout_mode = 0
+offset_left = 370.0
+offset_top = 400.0
+offset_right = 716.0
+offset_bottom = 460.0
+theme_override_font_sizes/font_size = 24
+text = "Quit"
 
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

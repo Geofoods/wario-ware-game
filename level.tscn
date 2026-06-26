@@ -4,8 +4,6 @@
 [ext_resource type="Texture2D" uid="uid://dm2gjgh4supw1" path="res://r2_06108e01-522d-4039-b360-357e8c96f7c3.png" id="1_u52ul"]
 [ext_resource type="Texture2D" uid="uid://casppo6nny6f3" path="res://images__1_-removebg-preview.png" id="2_vonw3"]
 
-[sub_resource type="Theme" id="Theme_vonw3"]
-
 [node name="level" type="Node2D" unique_id=1020310407]
 script = ExtResource("1_oi3di")
 
@@ -39,20 +37,25 @@ position = Vector2(776, 199)
 scale = Vector2(0.6166667, 0.6166667)
 texture = ExtResource("2_vonw3")
 
-[node name="Label" type="Label" parent="." unique_id=320068848]
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="PanelBg" type="ColorRect" parent="CanvasLayer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color(0.06, 0, 0.12, 0.55)
+
+[node name="Label" type="Label" parent="CanvasLayer" unique_id=320068848]
 offset_left = 486.0
 offset_top = 506.0
 offset_right = 670.0
 offset_bottom = 643.0
-theme = SubResource("Theme_vonw3")
 theme_override_font_sizes/font_size = 100
 text = "0.0"
 
-[node name="Label2" type="Label" parent="." unique_id=1125405082]
+[node name="Label2" type="Label" parent="CanvasLayer" unique_id=1125405082]
 offset_left = 382.0
 offset_top = 374.0
 offset_right = 724.0
 offset_bottom = 511.0
-theme = SubResource("Theme_vonw3")
 theme_override_font_sizes/font_size = 100
 text = "Level #"

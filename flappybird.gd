@@ -12,7 +12,6 @@ var finished := false
 @onready var pipes: Array[Node] = []
 
 func _ready() -> void:
-	hud_label.add_theme_color_override("font_color", Color.WHITE)
 	update_hud()
 
 	var template = $NicePngPipesPng388476

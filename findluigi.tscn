@@ -8,9 +8,16 @@ script = ExtResource("1_7ur4k")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1232428970]
 
+[node name="HUDBg" type="ColorRect" parent="CanvasLayer"]
+anchor_right = 1.0
+offset_bottom = 48.0
+color = Color(0.06, 0, 0.12, 0.75)
+
 [node name="HUDLabel" type="Label" parent="CanvasLayer" unique_id=453426106]
-offset_left = 10.0
+offset_left = 14.0
 offset_top = 10.0
-theme_override_font_sizes/font_size = 28
+offset_right = 14.0
+offset_bottom = 46.0
+theme_override_font_sizes/font_size = 32
 
 [node name="ScrollingBackground" parent="." unique_id=1741786071 instance=ExtResource("2_13s0b")]

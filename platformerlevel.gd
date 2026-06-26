@@ -10,7 +10,6 @@ var finished := false
 @onready var hud_label: Label = $CanvasLayer/HUDLabel
 
 func _ready() -> void:
-	hud_label.add_theme_color_override("font_color", Color.WHITE)
 	update_hud()
 
 	var area: Area2D = $garlic.get_node("Area2D")

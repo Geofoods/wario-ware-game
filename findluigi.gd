@@ -21,7 +21,6 @@ func _ready() -> void:
 
 	spawn_creature(LUIGI_TEXTURE, true)
 
-	hud_label.add_theme_color_override("font_color", Color.WHITE)
 	hud_label.text = "Find Luigi!"
 
 func _process(delta: float) -> void:
