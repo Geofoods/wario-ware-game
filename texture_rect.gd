@@ -8,5 +8,8 @@ func _on_button_pressed() -> void:
 	Global.reset()
 	Transition.change_scene("res://level.tscn")
 
+func _on_button_3_pressed() -> void:
+	Transition.change_scene("res://settings.tscn")
+
 func _on_button_2_pressed() -> void:
 	get_tree().quit()

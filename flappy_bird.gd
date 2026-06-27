@@ -24,12 +24,6 @@ func _physics_process(delta: float) -> void:
 		velocity.y += DEATH_GRAVITY * delta
 		sprite.rotation += DEATH_ROTATION_SPEED * delta
 		move_and_slide()
-		if death_timer >= DEATH_DELAY:
-			Global.lives -= 1
-			if Global.lives <= 0:
-				Transition.change_scene("res://lose_screen.tscn")
-			else:
-				Transition.change_scene("res://level.tscn")
 		return
 
 	var mouse_click := Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT) and not mouse_was_down
@@ -54,12 +48,15 @@ func _physics_process(delta: float) -> void:
 		if collision.get_collider() is StaticBody2D:
 			die()
 
-	if global_position.y < -100 or global_position.y > screen_height + 100:
+	if global_position.y < -290 or global_position.y > screen_height - 360:
 		die()
 
 func die() -> void:
 	if dead:
 		return
 	dead = true
-	collision_shape.disabled = true
-	velocity = Vector2(0, -200)
+	Global.lives -= 1
+	if Global.lives <= 0:
+		Transition.change_scene("res://lose_screen.tscn")
+	else:
+		Transition.change_scene("res://level.tscn")

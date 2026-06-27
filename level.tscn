@@ -18,17 +18,17 @@ scale = Vector2(0.6166667, 0.6166667)
 texture = ExtResource("2_vonw3")
 
 [node name="Garlic2" type="Sprite2D" parent="." unique_id=2029591145]
-position = Vector2(573, 200)
+position = Vector2(277, 200)
 scale = Vector2(0.6166667, 0.6166667)
 texture = ExtResource("2_vonw3")
 
 [node name="Garlic3" type="Sprite2D" parent="." unique_id=491742263]
-position = Vector2(278, 206.00002)
+position = Vector2(424, 206)
 scale = Vector2(0.6166667, 0.6166667)
 texture = ExtResource("2_vonw3")
 
 [node name="Garlic4" type="Sprite2D" parent="." unique_id=1648205687]
-position = Vector2(427, 206)
+position = Vector2(573, 205)
 scale = Vector2(0.6166667, 0.6166667)
 texture = ExtResource("2_vonw3")
 

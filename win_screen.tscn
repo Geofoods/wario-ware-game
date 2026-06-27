@@ -2,8 +2,7 @@
 
 [ext_resource type="Script" path="res://win_screen.gd" id="1_g3h4i"]
 [ext_resource type="Texture2D" uid="uid://dm2gjgh4supw1" path="res://r2_06108e01-522d-4039-b360-357e8c96f7c3.png" id="2_j5k6l"]
-
-[sub_resource type="Theme" id="Theme_abcde"]
+[ext_resource type="Theme" uid="uid://cxf8ovn7bdfgp" path="res://button_theme.tres" id="3_t8k9l"]
 
 [node name="WinScreen" type="Control"]
 layout_mode = 3
@@ -35,7 +34,7 @@ offset_left = 370.0
 offset_top = 280.0
 offset_right = 716.0
 offset_bottom = 319.0
-theme = SubResource("Theme_abcde")
+theme = ExtResource("3_t8k9l")
 text = "Play Again"
 
 [node name="MainMenu" type="Button" parent="."]
@@ -44,7 +43,7 @@ offset_left = 370.0
 offset_top = 340.0
 offset_right = 716.0
 offset_bottom = 379.0
-theme = SubResource("Theme_abcde")
+theme = ExtResource("3_t8k9l")
 text = "Main Menu"
 
 [connection signal="pressed" from="PlayAgain" to="." method="_on_play_again_pressed"]

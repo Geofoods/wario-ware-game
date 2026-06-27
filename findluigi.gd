@@ -33,6 +33,7 @@ func _ready() -> void:
 	spawn_creature(LUIGI_TEXTURE, true)
 
 	update_hud()
+	show_instruction()
 
 func _process(delta: float) -> void:
 	if finished:
@@ -104,6 +105,24 @@ func spawn_creature(texture: Texture2D, is_luigi: bool) -> void:
 		area.z_index = randi() % 3
 
 	add_child(area)
+
+func show_instruction() -> void:
+	var label = Label.new()
+	label.text = "Find Luigi!"
+	label.add_theme_font_override("font", WARIOWARE_FONT)
+	label.add_theme_constant_override("outline_size", 6)
+	label.add_theme_font_size_override("font_size", 80)
+	label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	label.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
+	label.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	label.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	var canvas = CanvasLayer.new()
+	canvas.add_child(label)
+	add_child(canvas)
+	var tween = create_tween()
+	tween.tween_interval(2.0)
+	tween.tween_property(label, "modulate:a", 0.0, 0.5)
+	tween.tween_callback(canvas.queue_free)
 
 func update_hud() -> void:
 	hud_label.text = "Find Luigi!  Time: %.1f" % time_left

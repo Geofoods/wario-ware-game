@@ -3,9 +3,8 @@
 [ext_resource type="Script" uid="uid://c4e6o5apii8it" path="res://player.gd" id="1_onrkg"]
 [ext_resource type="Texture2D" uid="uid://da013s65q4pe2" path="res://Wario290.webp" id="2_i3pqv"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hqtel"]
-radius = 657.1428
-height = 2400.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_onrkg"]
+size = Vector2(1500.0001, 2328.5713)
 
 [node name="player" type="CharacterBody2D" unique_id=1053554336]
 script = ExtResource("1_onrkg")
@@ -16,6 +15,6 @@ scale = Vector2(0.07, 0.07)
 texture = ExtResource("2_i3pqv")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1791840191]
-position = Vector2(83.75, 85.750015)
+position = Vector2(81.49999, 82.5)
 scale = Vector2(0.07, 0.07)
-shape = SubResource("CapsuleShape2D_hqtel")
+shape = SubResource("RectangleShape2D_onrkg")

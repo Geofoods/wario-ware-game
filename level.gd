@@ -20,14 +20,14 @@ func _ready() -> void:
 	for i in garlics.size():
 		garlics[i].visible = i < Global.lives
 
-	level_label.text = "Level"
+	level_label.text = "Level %d" % Global.round
 	timer_label.text = "%.1f" % time_left
 
 func _process(delta: float) -> void:
 	match state:
 		State.PLAYING:
 			time_left -= delta
-			timer_label.text = "%.1f" % time_left
+			timer_label.text = "%.1f" % maxf(time_left, 0.0)
 			if time_left <= 0:
 				state = State.WON
 				_on_timer_done()
