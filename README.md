@@ -1,10 +1,10 @@
-WarioWare Game
+WarioWare Godot
 
-A microgame collection built with Godot 4, inspired by Nintendo's WarioWare series. Survive a relentless gauntlet of fast-paced mini-games that get harder the longer you play.
+A game inspired by Wario Ware consisting of 6 minigames that get progressively faster
 
 How to Play
 
-You have 5 lives (the garlic icons). Each round, a random microgame is thrown at you with a countdown timer. Complete the objective to survive; fail and you lose a life. Lose all 5 and it's game over. Every round gets faster so make sure to focus.
+You have 5 live and each round, a random minigame is chosen to for you to beat. Complete the objective to survive. Fail and you lose a life. Lose all 5 and it's game over. Every round gets faster so make sure to focus.
 
 Microgames
 
