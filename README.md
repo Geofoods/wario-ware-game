@@ -8,12 +8,12 @@ You have 5 live and each round, a random minigame is chosen to for you to beat. 
 
 Microgames
 
-Click the Garlics	Click all 5 garlic cloves scattered on screen
-Flappy Bird	Survive by flapping through pipes
-Find Luigi	Click Luigi hiding among 50 bouncing Yoshis
-Pong	Keep the ball alive by blocking with your paddle
-Space Invaders	Shoot all 15 aliens before time runs out
-Platformer Climber	Climb endlessly on platforms while avoiding rising lava
+Click the Garlics - Click all 5 garlic cloves scattered on screen
+Flappy Bird - Survive by flapping through pipes
+Find Luigi - Click Luigi hiding among 50 bouncing Yoshis
+Pong - Keep the ball alive by blocking with your paddle
+Space Invaders - Shoot all 15 aliens before time runs out
+Platformer Climber - Climb endlessly on platforms while avoiding rising lava
 
 Controls
 
