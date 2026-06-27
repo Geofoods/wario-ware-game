@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://ddn4fyo6c8i1d"
+path="res://.godot/imported/Super Mario 64 DS Music ~ Wanted (Minigame).mp3-8b365cf80b26ffaf3234f601cbaeb033.mp3str"
+
+[deps]
+
+source_file="res://Super Mario 64 DS Music ~ Wanted (Minigame).mp3"
+dest_files=["res://.godot/imported/Super Mario 64 DS Music ~ Wanted (Minigame).mp3-8b365cf80b26ffaf3234f601cbaeb033.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

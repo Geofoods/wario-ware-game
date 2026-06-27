@@ -1,5 +1,6 @@
 extends CharacterBody2D
 
+const JUMP_SOUND = preload("res://bestuploadsever67aryan-jump-sound-531048.mp3")
 const GRAVITY = 1200.0
 const FLAP_VELOCITY = -450.0
 const DEATH_GRAVITY = 2000.0
@@ -34,12 +35,14 @@ func _physics_process(delta: float) -> void:
 		if flap:
 			started = true
 			velocity.y = FLAP_VELOCITY
+			play_jump_sound()
 		return
 
 	velocity.y += GRAVITY * delta
 
 	if flap:
 		velocity.y = FLAP_VELOCITY
+		play_jump_sound()
 
 	move_and_slide()
 
@@ -51,11 +54,19 @@ func _physics_process(delta: float) -> void:
 	if global_position.y < -290 or global_position.y > screen_height - 360:
 		die()
 
+func play_jump_sound() -> void:
+	var player = AudioStreamPlayer.new()
+	player.stream = JUMP_SOUND
+	player.finished.connect(player.queue_free)
+	add_child(player)
+	player.play()
+
 func die() -> void:
 	if dead:
 		return
 	dead = true
 	Global.lives -= 1
+	Global.play_fail_sound()
 	if Global.lives <= 0:
 		Transition.change_scene("res://lose_screen.tscn")
 	else:

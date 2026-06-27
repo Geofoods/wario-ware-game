@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dr6pib7u4m7bm" path="res://findluigi.gd" id="1_7ur4k"]
 [ext_resource type="PackedScene" path="res://scrolling_background.tscn" id="2_13s0b"]
+[ext_resource type="AudioStreamMP3" uid="uid://ddn4fyo6c8i1d" path="res://Super Mario 64 DS Music ~ Wanted (Minigame).mp3" id="3_7tg4q"]
 
 [node name="findluigi" type="Node2D" unique_id=1192200618]
 script = ExtResource("1_7ur4k")
@@ -16,3 +17,7 @@ offset_bottom = 46.0
 theme_override_font_sizes/font_size = 32
 
 [node name="ScrollingBackground" parent="." unique_id=1741786071 instance=ExtResource("2_13s0b")]
+
+[node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_7tg4q")
+autoplay = true

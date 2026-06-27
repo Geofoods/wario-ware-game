@@ -1,18 +1,17 @@
 extends Node2D
 
 const WARIOWARE_FONT = preload("res://Wariowareinc-BWWdn.ttf")
-const GARLIC_TARGET = 1
+const JUMP_SOUND = preload("res://bestuploadsever67aryan-jump-sound-531048.mp3")
 const TIME_LIMIT = 10.0
 const PLATFORM_W = 350.0
 const PLATFORM_H = 30.0
 const BOUNCE_VEL = -850.0
-const LAVA_RISE = 80.0
+const LAVA_RISE = 140.0
 const GRAVITY = 1200.0
 const MOVE_SPEED = 500.0
 const PLATFORM_GAP = 220.0
 const SCROLL_Y = 200.0
 
-var garlic_collected := 0
 var time_left: float
 var finished := false
 var started := false
@@ -27,6 +26,7 @@ var instruction_label: Label
 var instruction_canvas: CanvasLayer
 
 @onready var hud_label: Label = $CanvasLayer/HUDLabel
+@onready var music_player: AudioStreamPlayer = $MusicPlayer
 
 func _ready() -> void:
 	hud_label.add_theme_font_override("font", WARIOWARE_FONT)
@@ -57,7 +57,6 @@ func _ready() -> void:
 		spawn_platform_at(x, y)
 		highest_y = y
 
-	spawn_garlic()
 	show_instruction()
 
 func _physics_process(delta: float) -> void:
@@ -69,6 +68,8 @@ func _physics_process(delta: float) -> void:
 		mouse_was_down = Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT)
 		if Input.is_action_just_pressed("ui_accept") or mouse_click:
 			started = true
+			music_player.stream.loop = true
+			music_player.play()
 			if instruction_canvas:
 				var tween = create_tween()
 				tween.tween_property(instruction_label, "modulate:a", 0.0, 0.3)
@@ -77,7 +78,8 @@ func _physics_process(delta: float) -> void:
 
 	time_left -= delta
 	if time_left <= 0:
-		finish(false)
+		time_left = 0
+		finish(true)
 		return
 
 	var mouse_x = get_viewport().get_mouse_position().x
@@ -91,6 +93,7 @@ func _physics_process(delta: float) -> void:
 
 	if player_node.is_on_floor():
 		player_node.velocity.y = BOUNCE_VEL
+		play_jump_sound()
 
 	if player_node.position.y < SCROLL_Y:
 		var offset = SCROLL_Y - player_node.position.y
@@ -143,37 +146,22 @@ func spawn_platform_at(x: float, y: float) -> void:
 	add_child(body)
 	platforms.append(body)
 
-func spawn_garlic() -> void:
-	var garlic_y = highest_y - PLATFORM_GAP * 4
-	var garlic_x = randf_range(40, screen.size.x - 40 - PLATFORM_W)
-	var area = Area2D.new()
-	area.position = Vector2(garlic_x + PLATFORM_W * 0.5, garlic_y - 20)
-	area.body_entered.connect(_on_garlic_collected)
-	var sprite = Sprite2D.new()
-	sprite.texture = preload("res://images__1_-removebg-preview.png")
-	sprite.scale = Vector2(0.15, 0.15)
-	area.add_child(sprite)
-	var shape = CollisionShape2D.new()
-	var circle = CircleShape2D.new()
-	circle.radius = 30
-	shape.shape = circle
-	area.add_child(shape)
-	add_child(area)
-
-func _on_garlic_collected(body: Node2D) -> void:
-	if finished:
-		return
-	if body == player_node:
-		garlic_collected += 1
-		finish(true)
+func play_jump_sound() -> void:
+	var player = AudioStreamPlayer.new()
+	player.stream = JUMP_SOUND
+	player.finished.connect(player.queue_free)
+	add_child(player)
+	player.play()
 
 func finish(won: bool) -> void:
 	if finished:
 		return
 	finished = true
 	if won:
+		Global.play_success_sound()
 		Transition.change_scene("res://level.tscn")
 	else:
+		Global.play_fail_sound()
 		Global.lives -= 1
 		if Global.lives <= 0:
 			Transition.change_scene("res://lose_screen.tscn")
@@ -195,4 +183,4 @@ func show_instruction() -> void:
 	add_child(instruction_canvas)
 
 func update_hud() -> void:
-	hud_label.text = "Garlic: %d/%d\nTime: %.1f" % [garlic_collected, GARLIC_TARGET, time_left]
+	hud_label.text = "Survive: %.1f" % time_left

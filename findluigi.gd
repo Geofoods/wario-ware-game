@@ -17,8 +17,11 @@ var speed_min := BASE_SPEED_MIN
 var speed_max := BASE_SPEED_MAX
 
 @onready var hud_label: Label = $CanvasLayer/HUDLabel
+@onready var music_player: AudioStreamPlayer = $MusicPlayer
 
 func _ready() -> void:
+	music_player.stream.loop = true
+	music_player.play()
 	hud_label.add_theme_font_override("font", WARIOWARE_FONT)
 	hud_label.add_theme_constant_override("outline_size", 4)
 	screen_rect = get_viewport_rect()
@@ -43,6 +46,7 @@ func _process(delta: float) -> void:
 	if time_left <= 0:
 		finished = true
 		Global.lives -= 1
+		Global.play_fail_sound()
 		if Global.lives <= 0:
 			Transition.change_scene("res://lose_screen.tscn")
 		else:
@@ -132,4 +136,5 @@ func _on_luigi_clicked(_viewport: Node, event: InputEvent, _shape_idx: int) -> v
 		return
 	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
 		finished = true
+		Global.play_success_sound()
 		Transition.change_scene("res://level.tscn")

@@ -27,8 +27,11 @@ var enemy_speed := BASE_ENEMY_SPEED
 var dying_enemies := {}
 
 @onready var hud_label: Label = $CanvasLayer/HUDLabel
+@onready var music_player: AudioStreamPlayer = $MusicPlayer
 
 func _ready() -> void:
+	music_player.stream.loop = true
+	music_player.play()
 	hud_label.add_theme_font_override("font", WARIOWARE_FONT)
 	hud_label.add_theme_constant_override("outline_size", 4)
 	screen_rect = get_viewport_rect()
@@ -63,6 +66,7 @@ func _process(delta: float) -> void:
 	time_left -= delta
 	if time_left <= 0:
 		finished = true
+		Global.play_fail_sound()
 		Global.lives -= 1
 		if Global.lives <= 0:
 			Transition.change_scene("res://lose_screen.tscn")
@@ -115,6 +119,7 @@ func _process(delta: float) -> void:
 			continue
 		if e.position.y > screen_rect.size.y - 80:
 			finished = true
+			Global.play_fail_sound()
 			Global.lives -= 1
 			if Global.lives <= 0:
 				Transition.change_scene("res://lose_screen.tscn")
@@ -145,6 +150,7 @@ func _process(delta: float) -> void:
 
 	if all_dead:
 		finished = true
+		Global.play_success_sound()
 		Transition.change_scene("res://level.tscn")
 		return
 

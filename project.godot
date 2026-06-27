@@ -76,3 +76,4 @@ ui_up={
 [rendering]
 
 rendering_device/driver.windows="d3d12"
+environment/defaults/default_clear_color=Color(0.32941177, 0.5058824, 0.75686276, 1)

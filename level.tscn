@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://dofhc853wby8c" path="res://level.gd" id="1_oi3di"]
 [ext_resource type="Texture2D" uid="uid://dm2gjgh4supw1" path="res://r2_06108e01-522d-4039-b360-357e8c96f7c3.png" id="1_u52ul"]
 [ext_resource type="Texture2D" uid="uid://casppo6nny6f3" path="res://images__1_-removebg-preview.png" id="2_vonw3"]
+[ext_resource type="AudioStreamMP3" uid="uid://c6aohpvc8yeo5" path="res://A13 Grid Next.mp3" id="3_45mdr"]
 
 [node name="level" type="Node2D" unique_id=1020310407]
 script = ExtResource("1_oi3di")
@@ -56,3 +57,6 @@ offset_bottom = 463.0
 theme_override_font_sizes/font_size = 100
 text = "Level #"
 metadata/_edit_use_anchors_ = true
+
+[node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_45mdr")

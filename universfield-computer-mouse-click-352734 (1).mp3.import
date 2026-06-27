@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bdptcs7v0wm7d"
+path="res://.godot/imported/universfield-computer-mouse-click-352734 (1).mp3-48fab5631b08b110145717498d2c7f49.mp3str"
+
+[deps]
+
+source_file="res://universfield-computer-mouse-click-352734 (1).mp3"
+dest_files=["res://.godot/imported/universfield-computer-mouse-click-352734 (1).mp3-48fab5631b08b110145717498d2c7f49.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

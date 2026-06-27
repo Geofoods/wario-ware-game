@@ -3,6 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://drwto1lhmvwj3" path="res://player.tscn" id="1_1rf7d"]
 [ext_resource type="Script" uid="uid://b6ap731b72noc" path="res://platformerlevel.gd" id="3_g6ucd"]
 [ext_resource type="PackedScene" uid="uid://0k88ecmjmkpu" path="res://scrolling_background.tscn" id="4_s5t6u"]
+[ext_resource type="AudioStreamMP3" uid="uid://c0b3dp3yfjuf8" path="res://B04 Prologue Microgame 1.mp3" id="5_8q1n7"]
 
 [node name="platformerlevel" type="Node2D" unique_id=282166521]
 script = ExtResource("3_g6ucd")
@@ -29,3 +30,6 @@ offset_bottom = 46.0
 theme_override_font_sizes/font_size = 32
 
 [node name="ScrollingBackground" parent="." unique_id=1915756290 instance=ExtResource("4_s5t6u")]
+
+[node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_8q1n7")

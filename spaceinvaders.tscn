@@ -2,6 +2,7 @@
 
 [ext_resource type="PackedScene" path="res://scrolling_background2.tscn" id="2_0mvaf"]
 [ext_resource type="Script" uid="uid://0gqpkljclfh3" path="res://spaceinvaders.gd" id="2_1rxdh"]
+[ext_resource type="AudioStreamMP3" uid="uid://bktgstk5a20du" path="res://B08 Prologue Microgame 5.mp3" id="3_d13qt"]
 
 [node name="spaceinvaders" type="Node2D" unique_id=2129277312]
 rotation = -0.007517937
@@ -17,3 +18,7 @@ offset_bottom = 46.0
 theme_override_font_sizes/font_size = 32
 
 [node name="ScrollingBackground2" parent="." unique_id=1862902546 instance=ExtResource("2_0mvaf")]
+
+[node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_d13qt")
+autoplay = true

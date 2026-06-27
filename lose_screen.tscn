@@ -13,15 +13,6 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_m7n8o")
 
-[node name="Overlay" type="ColorRect" parent="." unique_id=1639301199]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.06, 0, 0.12, 0.5)
-
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=567528586]
 position = Vector2(581.25, 327.75)
 scale = Vector2(0.29611284, 0.29742545)
@@ -30,29 +21,29 @@ texture = ExtResource("2_p9q0r")
 [node name="Label" type="Label" parent="." unique_id=2127642057]
 layout_mode = 0
 offset_left = 105.0
-offset_top = 80.0
+offset_top = 40.0
 offset_right = 679.0
-offset_bottom = 200.0
+offset_bottom = 160.0
 theme_override_font_sizes/font_size = 100
 text = "GAME OVER"
 horizontal_alignment = 1
 
-[node name="ScoreLabel" type="Label" parent="."]
+[node name="ScoreLabel" type="Label" parent="." unique_id=657013247]
 layout_mode = 0
 offset_left = 212.0
-offset_top = 220.0
+offset_top = 240.0
 offset_right = 558.0
-offset_bottom = 260.0
+offset_bottom = 280.0
 theme_override_font_sizes/font_size = 32
 text = "Score: 0"
 horizontal_alignment = 1
 
-[node name="HighScoreLabel" type="Label" parent="."]
+[node name="HighScoreLabel" type="Label" parent="." unique_id=2050501034]
 layout_mode = 0
 offset_left = 212.0
-offset_top = 260.0
+offset_top = 290.0
 offset_right = 558.0
-offset_bottom = 300.0
+offset_bottom = 330.0
 theme_override_font_sizes/font_size = 28
 text = "Best: 0"
 horizontal_alignment = 1
@@ -60,19 +51,19 @@ horizontal_alignment = 1
 [node name="Retry" type="Button" parent="." unique_id=946468184]
 layout_mode = 0
 offset_left = 212.0
-offset_top = 330.0
+offset_top = 370.0
 offset_right = 558.0
-offset_bottom = 390.0
+offset_bottom = 430.0
 theme = ExtResource("3_t8k9l")
 theme_override_font_sizes/font_size = 24
 text = "Retry"
 
-[node name="Settings" type="Button" parent="."]
+[node name="Settings" type="Button" parent="." unique_id=715102423]
 layout_mode = 0
 offset_left = 212.0
-offset_top = 410.0
+offset_top = 460.0
 offset_right = 558.0
-offset_bottom = 470.0
+offset_bottom = 520.0
 theme = ExtResource("3_t8k9l")
 theme_override_font_sizes/font_size = 24
 text = "Settings"
@@ -80,9 +71,9 @@ text = "Settings"
 [node name="MainMenu" type="Button" parent="." unique_id=1780826166]
 layout_mode = 0
 offset_left = 212.0
-offset_top = 490.0
+offset_top = 550.0
 offset_right = 558.0
-offset_bottom = 550.0
+offset_bottom = 610.0
 theme = ExtResource("3_t8k9l")
 theme_override_font_sizes/font_size = 24
 text = "Main Menu"

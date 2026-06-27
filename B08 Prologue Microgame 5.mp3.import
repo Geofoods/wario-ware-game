@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bktgstk5a20du"
+path="res://.godot/imported/B08 Prologue Microgame 5.mp3-2875054e2aa2c59ef1161584bb2bc46a.mp3str"
+
+[deps]
+
+source_file="res://B08 Prologue Microgame 5.mp3"
+dest_files=["res://.godot/imported/B08 Prologue Microgame 5.mp3-2875054e2aa2c59ef1161584bb2bc46a.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

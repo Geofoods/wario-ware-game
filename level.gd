@@ -7,6 +7,7 @@ enum State { PLAYING, WON, LOST }
 @onready var level_label: Label = $CanvasLayer/Label2
 @onready var timer_label: Label = $CanvasLayer/Label
 @onready var garlics: Array[Node] = [$Garlic, $Garlic2, $Garlic3, $Garlic4, $Garlic5]
+@onready var music_player: AudioStreamPlayer = $MusicPlayer
 
 var time_left: float = 2.0
 var state: State = State.PLAYING
@@ -22,6 +23,7 @@ func _ready() -> void:
 
 	level_label.text = "Level %d" % Global.round
 	timer_label.text = "%.1f" % time_left
+	music_player.play()
 
 func _process(delta: float) -> void:
 	match state:
@@ -38,6 +40,7 @@ func _process(delta: float) -> void:
 
 func _on_timer_done() -> void:
 	Global.round += 1
+	music_player.stop()
 	var levels = [
 		"res://platformerlevel.tscn",
 		"res://clickergame.tscn",

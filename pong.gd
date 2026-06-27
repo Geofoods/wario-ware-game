@@ -18,8 +18,11 @@ var hue := 0.0
 var ball_speed := BASE_BALL_SPEED
 
 @onready var hud_label: Label = $CanvasLayer/HUDLabel
+@onready var music_player: AudioStreamPlayer = $MusicPlayer
 
 func _ready() -> void:
+	music_player.stream.loop = true
+	music_player.play()
 	hud_label.add_theme_font_override("font", WARIOWARE_FONT)
 	hud_label.add_theme_constant_override("outline_size", 4)
 	screen_rect = get_viewport_rect()
@@ -41,6 +44,7 @@ func _process(delta: float) -> void:
 	time_left -= delta
 	if time_left <= 0:
 		finished = true
+		Global.play_success_sound()
 		Transition.change_scene("res://level.tscn")
 		return
 
@@ -68,6 +72,7 @@ func _process(delta: float) -> void:
 			ball_pos.x = PADDLE_X + PADDLE_WIDTH + BALL_SIZE * 0.5
 		elif ball_pos.x < -BALL_SIZE:
 			finished = true
+			Global.play_fail_sound()
 			Global.lives -= 1
 			if Global.lives <= 0:
 				Transition.change_scene("res://lose_screen.tscn")

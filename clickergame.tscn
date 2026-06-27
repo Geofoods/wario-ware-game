@@ -3,9 +3,14 @@
 [ext_resource type="PackedScene" path="res://scrolling_background.tscn" id="1_ifdh0"]
 [ext_resource type="Texture2D" uid="uid://casppo6nny6f3" path="res://images__1_-removebg-preview.png" id="2_1ieab"]
 [ext_resource type="Script" path="res://clickergame.gd" id="3_h3uyd"]
+[ext_resource type="AudioStreamMP3" uid="uid://c0b3dp3yfjuf8" path="res://B04 Prologue Microgame 1.mp3" id="4_wtj0q"]
 
 [node name="clickergame" type="Node2D" unique_id=1818453843]
 script = ExtResource("3_h3uyd")
+
+[node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_wtj0q")
+autoplay = true
 
 [node name="ScrollingBackground" parent="." unique_id=95310850 instance=ExtResource("1_ifdh0")]
 

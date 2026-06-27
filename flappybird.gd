@@ -14,8 +14,11 @@ var mouse_was_down := false
 
 @onready var hud_label: Label = $CanvasLayer/HUDLabel
 @onready var pipes: Array[Node] = []
+@onready var music_player: AudioStreamPlayer = $MusicPlayer
 
 func _ready() -> void:
+	music_player.stream.loop = true
+	music_player.play()
 	hud_label.add_theme_font_override("font", WARIOWARE_FONT)
 	hud_label.add_theme_constant_override("outline_size", 4)
 	var sm = Global.get_speed_mult()
@@ -49,6 +52,7 @@ func _process(delta: float) -> void:
 	if time_left <= 0:
 		time_left = 0
 		finished = true
+		Global.play_success_sound()
 		Transition.change_scene("res://level.tscn")
 		return
 
