@@ -13,13 +13,15 @@ Flappy Bird - Survive by flapping through pipes
 Find Luigi - Click Luigi hiding among 50 bouncing Yoshis
 Pong - Keep the ball alive by blocking with your paddle
 Space Invaders - Shoot all 15 aliens before time runs out
-Platformer Climber - Climb endlessly on platforms while avoiding rising lava
+Doodle Jump - Jump and avoid the lava rising
+Geometry Dash - Jump Over Spikes
+Rock Breaking - Click to break the rock
+Quick Math - Do your quick mental math
 
 Controls
 
 - Mouse - primary control for all games
 - WASD for movement when applicable
-- ESC -  quit (in-game)
 
 Features
 
