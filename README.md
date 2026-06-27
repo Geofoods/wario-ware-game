@@ -25,7 +25,7 @@ Controls
 
 Features
 
-- 6 unique minigames
+- 9 unique minigames
 - Ramping difficulty
 - High score tracking on the exe version
 - Volume and fullscreen settings
